@@ -71,11 +71,15 @@ export const check = (ctx) => {
     ctx.status = 401;
     return;
   }
-  console.log('checked!!');
+  console.log('check after create token');
+
   ctx.body = user;
 };
 
-export const logout = async (ctx) => {};
+export const logout = async (ctx) => {
+  ctx.cookies.set('access_token');
+  ctx.status = 204;
+};
 
 export const test = async (ctx) => {
   ctx.body = 'hi';
